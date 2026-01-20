@@ -959,8 +959,8 @@ if __name__ == "__main__":
     # Get the mode from command line arguments
     mode = sys.argv[1] if len(sys.argv) > 1 else "sse"
 
-    if mode not in ["stdio", "sse"]:
-        logger.error(f"❌ Invalid mode: {mode}. Must be one of: stdio, sse")
+    if mode not in ["stdio", "sse", "http"]:
+        logger.error(f"❌ Invalid mode: {mode}. Must be one of: stdio, http, sse")
         sys.exit(1)
 
     # Set logger level to debug if DEBUG environment variable is set
@@ -976,6 +976,9 @@ if __name__ == "__main__":
     if mode == "stdio":
         # Run in stdio mode
         mcp.run(transport=mode)
+    elif mode == "http":
+        # FastMCP Server with HTTP transport
+        mcp.run(transport="http", host="0.0.0.0", port=FASTMCP_PORT)
     else:
         # Run in SSE mode with documentation
         uvicorn.run(app, host="0.0.0.0", port=FASTMCP_PORT)
