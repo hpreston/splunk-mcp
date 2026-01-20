@@ -103,7 +103,7 @@ docker compose run --rm -p 8000:8000 mcp python splunk_mcp.py http
 
 When running in HTTP mode, the MCP server exposes the standard HTTP transport endpoint:
 
-- **Endpoint**: `/mcp/v1` (standard MCP HTTP path)
+- **Endpoint**: `/mcp` (standard MCP HTTP path)
 - **Protocol**: HTTP POST with JSON-RPC style messages
 - **Port**: `8000` (default, configurable via `FASTMCP_PORT`)
 
@@ -112,7 +112,7 @@ When running in HTTP mode, the MCP server exposes the standard HTTP transport en
 | Feature | HTTP Mode | SSE Mode |
 |---------|-----------|----------|
 | **Standard** | ✅ Current MCP spec | ⚠️ Legacy (still supported) |
-| **Endpoint** | `/mcp/v1` | `/sse` |
+| **Endpoint** | `/mcp` | `/sse` |
 | **Protocol** | HTTP request/response | Server-Sent Events |
 | **Default** | No (explicit opt-in) | Yes (backward compatibility) |
 | **Recommended** | Yes | No (migrate when ready) |
@@ -136,7 +136,7 @@ mcp.run(transport="http", host="0.0.0.0", port=FASTMCP_PORT)
 ```
 
 Behind the scenes, FastMCP:
-1. Creates HTTP POST handler at `/mcp/v1`
+1. Creates HTTP POST handler at `/mcp`
 2. Implements JSON-RPC style message handling
 3. Maps MCP protocol messages to HTTP requests/responses
 4. Provides proper content negotiation and error handling
@@ -178,7 +178,7 @@ Test HTTP mode is working correctly:
 uv run python splunk_mcp.py http
 
 # In another terminal, verify endpoint is accessible
-curl -X POST http://localhost:8000/mcp/v1 \
+curl -X POST http://localhost:8000/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
