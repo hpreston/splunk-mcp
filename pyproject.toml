@@ -1,6 +1,6 @@
 [project]
 name = "splunk-mcp"
-version = "0.3.0"
+version = "0.4.0"
 description = "A FastMCP-based tool for interacting with Splunk Enterprise/Cloud through natural language"
 readme = "README.md"
 requires-python = ">=3.10"

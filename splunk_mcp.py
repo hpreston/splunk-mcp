@@ -37,14 +37,14 @@ os.environ["FASTMCP_PORT"] = str(FASTMCP_PORT)
 app = FastAPI(
     title="Splunk MCP API",
     description="A FastMCP-based tool for interacting with Splunk Enterprise/Cloud through natural language",
-    version="0.3.0",
+    version="0.4.0",
 )
 
 # Initialize the MCP server
 mcp = FastMCP(
     name="splunk",
     instructions="A FastMCP-based tool for interacting with Splunk Enterprise/Cloud through natural language",
-    version="0.3.0",
+    version="0.4.0",
 )
 
 # Create SSE transport instance for handling server-sent events
@@ -277,7 +277,7 @@ async def get_openapi_schema():
 
 
 # Global variables
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 SPLUNK_HOST = os.environ.get("SPLUNK_HOST", "localhost")
 SPLUNK_PORT = int(os.environ.get("SPLUNK_PORT", "8089"))
 SPLUNK_SCHEME = os.environ.get("SPLUNK_SCHEME", "https")
