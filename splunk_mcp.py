@@ -332,7 +332,8 @@ async def search_splunk(
     earliest_time: str = "-24h",
     latest_time: str = "now",
     max_results: int = 100,
-) -> List[Dict[str, Any]]:
+):  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> List[Dict[str, Any]]
     """
     Execute a Splunk search query and return the results.
 
@@ -381,7 +382,8 @@ async def search_splunk(
 
 
 @mcp.tool()
-async def list_indexes() -> Dict[str, List[str]]:
+async def list_indexes():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, List[str]]
     """
     Get a list of all available Splunk indexes.
 
@@ -399,7 +401,10 @@ async def list_indexes() -> Dict[str, List[str]]:
 
 
 @mcp.tool()
-async def get_index_info(index_name: str) -> Dict[str, Any]:
+async def get_index_info(
+    index_name: str,
+):  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """
     Get metadata for a specific Splunk index.
 
@@ -430,7 +435,8 @@ async def get_index_info(index_name: str) -> Dict[str, Any]:
 
 
 @mcp.tool()
-async def list_saved_searches() -> List[Dict[str, Any]]:
+async def list_saved_searches():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> List[Dict[str, Any]]
     """
     List all saved searches in Splunk
 
@@ -462,7 +468,8 @@ async def list_saved_searches() -> List[Dict[str, Any]]:
 
 
 @mcp.tool()
-async def current_user() -> Dict[str, Any]:
+async def current_user():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """
     Get information about the currently authenticated user.
 
@@ -564,7 +571,8 @@ async def current_user() -> Dict[str, Any]:
 
 
 @mcp.tool()
-async def list_users() -> List[Dict[str, Any]]:
+async def list_users():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> List[Dict[str, Any]]
     """List all Splunk users (requires admin privileges)"""
     try:
         service = get_splunk_connection()
@@ -628,7 +636,8 @@ async def list_users() -> List[Dict[str, Any]]:
 
 
 @mcp.tool()
-async def list_kvstore_collections() -> List[Dict[str, Any]]:
+async def list_kvstore_collections():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> List[Dict[str, Any]]
     """
     List all KV store collections across apps.
 
@@ -711,7 +720,8 @@ async def list_kvstore_collections() -> List[Dict[str, Any]]:
 
 
 @mcp.tool()
-async def health_check() -> Dict[str, Any]:
+async def health_check():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """Get basic Splunk connection information and list available apps"""
     try:
         service = get_splunk_connection()
@@ -753,7 +763,8 @@ async def health_check() -> Dict[str, Any]:
 
 
 @mcp.tool()
-async def get_indexes_and_sourcetypes() -> Dict[str, Any]:
+async def get_indexes_and_sourcetypes():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """
     Get a list of all indexes and their sourcetypes.
 
@@ -833,7 +844,8 @@ async def get_indexes_and_sourcetypes() -> Dict[str, Any]:
 
 
 @mcp.tool()
-async def list_tools() -> List[Dict[str, Any]]:
+async def list_tools():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> List[Dict[str, Any]]
     """
     List all available MCP tools.
 
@@ -917,13 +929,15 @@ async def list_tools() -> List[Dict[str, Any]]:
 
 
 @mcp.tool()
-async def health() -> Dict[str, Any]:
+async def health():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """Get basic Splunk connection information and list available apps (same as health_check but for endpoint consistency)"""
     return await health_check()
 
 
 @mcp.tool()
-async def ping() -> Dict[str, Any]:
+async def ping():  # Return type hint removed - causes schema errors in some MCP clients (may be fixed in FastMCP 3.x)
+    # Original: -> Dict[str, Any]
     """
     Simple ping endpoint to check server availability and get basic server information.
 
